@@ -10,7 +10,7 @@ from google.cloud import storage as gcs
 # CONFIG
 # ---------------------------
 # Required secrets (all flat keys; NO secrets.toml file needed):
-# st.secrets["api_key"]                 -> Firebase Web API key
+# st.secrets["apiKey"]                 -> Firebase Web API key
 # st.secrets["project_id"]              -> Firebase project ID
 # Optional: st.secrets["storage_bucket"] (defaults to "<project_id>.appspot.com")
 #
@@ -70,8 +70,8 @@ db, bucket = initialize_firebase()
 # ---------------------------
 def signin_email_password(email: str, password: str):
     """Sign in via Firebase Auth REST; returns JSON with localId(uid), idToken, email."""
-    api_key = st.secrets["api_key"]
-    url = FIREBASE_REST_SIGNIN + api_key
+    apiKey = st.secrets["apiKey"]
+    url = FIREBASE_REST_SIGNIN + apiKey
     payload = {"email": email, "password": password, "returnSecureToken": True}
     r = requests.post(url, json=payload, timeout=10)
     r.raise_for_status()
