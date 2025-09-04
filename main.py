@@ -206,8 +206,19 @@ if st.session_state.auth:
             uid = st.session_state.auth["uid"]
             hard_delete_user(uid)
             st.session_state.auth = None
+            st.session_state.deleted = True   # 👈 add this flag
             st.success("Account deleted. We’re sorry to see you go.")
         except Exception as e:
             st.error(f"Deletion error: {e}")
+    if st.session_state.get("deleted", False):
+        st.markdown(card_css.format(inner="""
+    <div style="text-align:center;">
+      <h3 style="color:#e53935; margin-bottom:6px;">✅ Account Deleted</h3>
+      <p style="color:#444;">Your Gi-Bud account and all associated data have been permanently removed.</p>
+      <p style="color:#777; font-size:13px;">We’re sorry to see you go. If you change your mind, you’re always welcome to sign up again!</p>
+    </div>
+    """), unsafe_allow_html=True)    
 else:
     st.warning("Please sign in to continue.")
+
+    
