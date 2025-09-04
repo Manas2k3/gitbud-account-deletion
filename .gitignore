@@ -1,0 +1,39 @@
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore environment-specific files
+.env
+
+# Ignore Firebase credentials (don't push sensitive data like private keys)
+config/firebase-credentials/
+
+# Ignore virtual environment directories
+venv/
+env/
+.venv/
+
+# Ignore Streamlit-related files
+.streamlit
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore log files
+*.log
+
+# Ignore system files (e.g., macOS Finder files, Windows thumbnail cache)
+.DS_Store
+Thumbs.db
+
+# Ignore IDE configuration files (if any)
+.vscode/
+.idea/
+
+# Ignore deployment-specific files
+*.tar.gz
+*.zip
+
+firebase_admin_key.json
+data.py
