@@ -5,7 +5,7 @@ __pycache__/
 
 # Ignore environment-specific files
 .env
-
+myenv
 # Ignore Firebase credentials (don't push sensitive data like private keys)
 config/firebase-credentials/
 
