@@ -86,13 +86,17 @@ def _batch_delete_collection(collection_ref, batch_size=500):
         for d in docs:
             batch.delete(d.reference)
         batch.commit()
-        last = docs[-1]
-        docs = list(collection_ref.start_after({u"id": last.id}).limit(batch_size).stream())
+
+        # paginate properly using the last doc snapshot
+        last_doc = docs[-1]
+        docs = list(
+            collection_ref.start_after(last_doc).limit(batch_size).stream()
+        )
 
 
 def delete_user_firestore(uid: str):
     """Delete user root doc and all its subcollections under Users/{uid}."""
-    user_ref = db.collection("Users").doc(uid)
+    user_ref = db.collection("Users").document(uid)  # <-- use .document() not .doc()
 
     # Delete all subcollections dynamically
     for col in user_ref.collections():
@@ -103,6 +107,7 @@ def delete_user_firestore(uid: str):
         user_ref.delete()
     except Exception:
         pass
+
 
 
 def delete_user_storage(uid: str):
