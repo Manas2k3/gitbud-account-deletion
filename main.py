@@ -143,7 +143,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-st.markdown("<h2 style='margin-top:-110px;'>Delete your BabyCue account</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='margin-top:-110px;'>Delete your Gi-Bud account</h2>", unsafe_allow_html=True)
 
 card_css = """
 <div style="border:1px solid #f3c9cd;border-radius:16px;
